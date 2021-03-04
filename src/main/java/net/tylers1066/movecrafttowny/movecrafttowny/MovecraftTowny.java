@@ -2,6 +2,10 @@ package net.tylers1066.movecrafttowny.movecrafttowny;
 
 import com.palmergames.bukkit.towny.Towny;
 import net.tylers1066.movecrafttowny.movecrafttowny.config.Config;
+import net.tylers1066.movecrafttowny.movecrafttowny.listener.CraftDetectListener;
+import net.tylers1066.movecrafttowny.movecrafttowny.listener.CraftRotateListener;
+import net.tylers1066.movecrafttowny.movecrafttowny.listener.CraftSinkListener;
+import net.tylers1066.movecrafttowny.movecrafttowny.listener.CraftTranslateListener;
 import net.tylers1066.movecrafttowny.movecrafttowny.localisation.I18nSupport;
 import net.tylers1066.movecrafttowny.movecrafttowny.utils.TownyUtils;
 import org.bukkit.plugin.Plugin;
@@ -51,7 +55,10 @@ public final class MovecraftTowny extends JavaPlugin {
         getLogger().log(Level.INFO, "Settings: TownyBlockMoveOnSwitchPerm - {0}", Config.TownyBlockMoveOnSwitchPerm);
         getLogger().log(Level.INFO, "Settings: TownyBlockSinkOnNoPVP - {0}", Config.TownyBlockSinkOnNoPVP);
 
-        // register events
+        getServer().getPluginManager().registerEvents(new CraftDetectListener(), this);
+        getServer().getPluginManager().registerEvents(new CraftRotateListener(), this);
+        getServer().getPluginManager().registerEvents(new CraftSinkListener(), this);
+        getServer().getPluginManager().registerEvents(new CraftTranslateListener(), this);
     }
 
     @Override
