@@ -21,7 +21,7 @@ public class I18nSupport {
         InputStream stream = null;
 
         try {
-            stream = new FileInputStream(langDirectory.getAbsolutePath()+"/mc-cannonslang_" + Config.Locale + ".properties");
+            stream = new FileInputStream(langDirectory.getAbsolutePath()+"/movecrafttownylang_" + Config.Locale + ".properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
