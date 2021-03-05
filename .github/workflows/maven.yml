@@ -57,9 +57,9 @@ jobs:
     - name: Stage jar
       run: mkdir staging && cp Movecraft-Towny/target/Movecraft-Towny*.jar staging
     - name: Rename jar
-      run: mv staging/Movecraft-Combat*.jar staging/Movecraft-Towny_$GITHUB_SHA.jar
+      run: mv staging/Movecraft-Towny*.jar staging/Movecraft-Towny_$GITHUB_SHA.jar
     - name: Upload jar
       uses: actions/upload-artifact@v2
       with:
         name: Movecraft-Towny_Dev-Build
-        path: staging/Movecraft-Townyt_*.jar
+        path: staging/Movecraft-Towny_*.jar
