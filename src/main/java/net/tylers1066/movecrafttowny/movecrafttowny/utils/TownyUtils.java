@@ -1,10 +1,11 @@
 package net.tylers1066.movecrafttowny.movecrafttowny.utils;
 
+import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.exceptions.TownyException;
 import com.palmergames.bukkit.towny.object.*;
 import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
-import com.palmergames.bukkit.towny.war.flagwar.TownyWarConfig;
+import com.palmergames.bukkit.towny.war.common.WarZoneConfig;
 import net.tylers1066.movecrafttowny.movecrafttowny.MovecraftTowny;
 import net.tylers1066.movecrafttowny.movecrafttowny.config.Config;
 import net.tylers1066.movecrafttowny.movecrafttowny.localisation.I18nSupport;
@@ -33,7 +34,7 @@ public class TownyUtils {
     public static TownyWorld getTownyWorld(World w) {
         TownyWorld tw;
         try {
-            tw = TownyUniverse.getDataSource().getWorld(w.getName());
+            tw = TownyUniverse.getInstance().getDataSource().getWorld(w.getName());
             if(!tw.isUsingTowny())
                 return null;
         }
@@ -90,7 +91,7 @@ public class TownyUtils {
 
     public static boolean validateResident(Player player) {
         try {
-            Resident resident = TownyUniverse.getDataSource().getResident(player.getName());
+            Resident resident = TownyUniverse.getInstance().getDataSource().getResident(player.getName());
             return true;
         }
         catch (TownyException e) {
@@ -110,7 +111,7 @@ public class TownyUtils {
         PlayerCache playerCache = MovecraftTowny.getInstance().getTownyPlugin().getCache(player);
         PlayerCache.TownBlockStatus status = playerCache.getStatus();
 
-        return !playerCache.hasBlockErrMsg() && status == PlayerCache.TownBlockStatus.WARZONE && TownyWarConfig.isAllowingSwitchesInWarZone();
+        return !playerCache.hasBlockErrMsg() && status == PlayerCache.TownBlockStatus.WARZONE && WarZoneConfig.isAllowingSwitchesInWarZone();
     }
 
     public static boolean validatePVP(TownBlock tb) {
