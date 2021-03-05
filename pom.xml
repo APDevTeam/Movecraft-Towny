@@ -79,7 +79,7 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/../Movecraft/target/Movecraft.jar</systemPath>
         </dependency>
-        <!-- This doesn't have a maven repo but its own -->
+        <!-- Towny 0.93.1.0 -->
         <dependency>
             <groupId>com.palmergames</groupId>
             <artifactId>Towny</artifactId>
