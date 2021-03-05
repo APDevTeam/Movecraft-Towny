@@ -17,7 +17,7 @@ This plugin requires that the user setup and build their [Movecraft](https://git
 java -jar BuildTools.jar --rev 1.13.2
 ```
 
-Then, run the following to build Movecraft-Cannons through `maven`.
+Then, run the following to build Movecraft-Towny through `maven`.
 ```
 mvn clean install
 ```
