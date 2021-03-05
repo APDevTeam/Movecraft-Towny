@@ -102,10 +102,7 @@ public class TownyUtils {
         if(player != null && !validateResident(player))
             return true; // Is this a logic issue...?
 
-        int id = Material.STONE_BUTTON.getId();
-        byte data = 0;
-
-        boolean bSwitch = PlayerCacheUtil.getCachePermission(player, loc, id, data, TownyPermission.ActionType.SWITCH);
+        boolean bSwitch = PlayerCacheUtil.getCachePermission(player, loc, Material.STONE_BUTTON, TownyPermission.ActionType.SWITCH);
 
         if(bSwitch)
             return true;

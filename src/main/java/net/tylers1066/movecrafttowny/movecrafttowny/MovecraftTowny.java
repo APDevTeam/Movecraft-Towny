@@ -10,6 +10,7 @@ import net.tylers1066.movecrafttowny.movecrafttowny.localisation.I18nSupport;
 import net.tylers1066.movecrafttowny.movecrafttowny.utils.TownyUtils;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -66,7 +67,7 @@ public final class MovecraftTowny extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    @Nullable
+    @NotNull
     public Towny getTownyPlugin() {
         return townyPlugin;
     }
