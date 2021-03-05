@@ -4,7 +4,7 @@ Home of the code for the following features:
  - Towny plugin integration
 
 ## Version support
-The `main` branch is coded for Towny v0.93.1.0 for 1.10.2 and 1.11.2, and the `dev` branch is coded for Towny v0.96.7.0 for all other versions.
+The `main` branch is coded for Towny v0.93.1.0 for 1.10.2 with support for Towny versions up to v0.96.2.0 and minecraft 1.13.2.  The `dev` branch is coded for Towny v0.96.7.0 for 1.14+.
 
 ## Download
 
