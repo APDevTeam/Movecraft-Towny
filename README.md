@@ -1,5 +1,6 @@
 # Movecraft-Towny Integration
- 
+![Towny](https://github.com/TylerS1066/Movecraft-Towny/actions/workflows/maven.yml/badge.svg)
+
 Home of the code for the following features:
  - Towny plugin integration
 
