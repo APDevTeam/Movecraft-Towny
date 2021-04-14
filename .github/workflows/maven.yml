@@ -66,4 +66,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Movecraft-Towny_Dev-Build
-        path: staging/Movecraft-Townyt_*.jar
+        path: staging/Movecraft-Towny_*.jar

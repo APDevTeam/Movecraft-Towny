@@ -18,7 +18,7 @@
     </properties>
 
     <build>
-        <finalName>Movecraft-Towny_Legacy</finalName>
+        <finalName>Movecraft-Towny_1.14+</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -85,6 +85,7 @@
             <systemPath>${project.basedir}/../Movecraft/target/Movecraft.jar</systemPath>
         </dependency>
         <!-- Towny 0.93.1.0 -->
+        <!--
         <dependency>
             <groupId>com.palmergames</groupId>
             <artifactId>Towny</artifactId>
@@ -92,14 +93,13 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/Towny.jar</systemPath>
         </dependency>
-        <!--
+        -->
         <dependency>
             <groupId>com.github.TownyAdvanced</groupId>
             <artifactId>Towny</artifactId>
             <version>LATEST</version>
             <scope>provided</scope>
         </dependency>
-        -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
