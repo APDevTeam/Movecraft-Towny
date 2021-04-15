@@ -1,7 +1,7 @@
 name: Movecraft-Towny
 version: ${project.version}
 main: net.tylers1066.movecrafttowny.movecrafttowny.MovecraftTowny
-api-version: 1.13
+api-version: 1.14
 depend: [Movecraft, Towny]
 authors: [TylerS1066, BaccaYarro, cccm5]
 description: Movecraft and Towny Integration

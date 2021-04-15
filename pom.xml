@@ -6,7 +6,7 @@
 
     <groupId>net.TylerS1066.Movecraft-Towny</groupId>
     <artifactId>Movecraft-Towny</artifactId>
-    <version>0.1.2</version>
+    <version>0.2.a</version>
     <packaging>jar</packaging>
 
     <name>Movecraft-Towny</name>
@@ -18,7 +18,7 @@
     </properties>
 
     <build>
-        <finalName>Movecraft-Towny_1.14+</finalName>
+        <finalName>Movecraft-Towny</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -80,20 +80,10 @@
         <dependency>
             <groupId>net.countercraft.movecraft</groupId>
             <artifactId>Movecraft</artifactId>
-            <version>7.0.0</version>
+            <version>LATEST</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/../Movecraft/target/Movecraft.jar</systemPath>
         </dependency>
-        <!-- Towny 0.93.1.0 -->
-        <!--
-        <dependency>
-            <groupId>com.palmergames</groupId>
-            <artifactId>Towny</artifactId>
-            <version>LATEST</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/Towny.jar</systemPath>
-        </dependency>
-        -->
         <dependency>
             <groupId>com.github.TownyAdvanced</groupId>
             <artifactId>Towny</artifactId>
@@ -103,7 +93,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <version>1.14.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
