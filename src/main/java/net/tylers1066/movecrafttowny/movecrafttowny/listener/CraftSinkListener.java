@@ -4,7 +4,7 @@ import com.palmergames.bukkit.towny.object.TownBlock;
 import net.countercraft.movecraft.MovecraftLocation;
 import net.countercraft.movecraft.craft.Craft;
 import net.countercraft.movecraft.events.CraftSinkEvent;
-import net.countercraft.movecraft.util.HitBox;
+import net.countercraft.movecraft.util.hitboxes.HitBox;
 import net.tylers1066.movecrafttowny.movecrafttowny.config.Config;
 import net.tylers1066.movecrafttowny.movecrafttowny.localisation.I18nSupport;
 import net.tylers1066.movecrafttowny.movecrafttowny.utils.TownyUtils;
