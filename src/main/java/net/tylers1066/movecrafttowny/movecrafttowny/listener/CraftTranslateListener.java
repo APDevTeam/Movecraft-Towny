@@ -27,21 +27,26 @@ public class CraftTranslateListener implements Listener {
             return;
 
         for (MovecraftLocation ml : event.getNewHitBox()) {
-
-            TownBlock townBlock = TownyUtils.getTownBlock(ml.toBukkit(event.getCraft().getW()));
-            if (townBlock == null || townBlocks.contains(townBlock)) {
-                continue;
+            Town town;
+            try {
+                TownBlock townBlock = TownyUtils.getTownBlock(ml.toBukkit(event.getCraft().getW()));
+                if (townBlock == null || townBlocks.contains(townBlock)) {
+                    continue;
+                }
+                if (TownyUtils.validateCraftMoveEvent(craft.getNotificationPlayer(), ml.toBukkit(craft.getW()), townyWorld)) {
+                    townBlocks.add(townBlock);
+                    continue;
+                }
+                town = TownyUtils.getTown(townBlock);
+                if (town == null)
+                    continue;
+                final TownyWorldHeightLimits whLim = TownyUtils.getWorldLimits(event.getCraft().getW());
+                final Location spawnLoc = TownyUtils.getTownSpawn(townBlock);
+                if (whLim.validate(ml.getY(), spawnLoc.getBlockY())) {
+                    continue;
+                }
             }
-            if (TownyUtils.validateCraftMoveEvent(craft.getNotificationPlayer(), ml.toBukkit(craft.getW()), townyWorld)) {
-                townBlocks.add(townBlock);
-                continue;
-            }
-            Town town = TownyUtils.getTown(townBlock);
-            if (town == null)
-                continue;
-            final TownyWorldHeightLimits whLim = TownyUtils.getWorldLimits(event.getCraft().getW());
-            final Location spawnLoc = TownyUtils.getTownSpawn(townBlock);
-            if (whLim.validate(ml.getY(), spawnLoc.getBlockY())) {
+            catch(NullPointerException ignored) {
                 continue;
             }
             event.setFailMessage(String.format(I18nSupport.getInternationalisedString("Towny - Translation Failed") + " %s @ %d,%d,%d", town.getName(), ml.getX(), ml.getY(), ml.getZ()));

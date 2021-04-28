@@ -101,7 +101,7 @@ public class TownyUtils {
 
     public static boolean validateCraftMoveEvent(Player player, Location loc, TownyWorld world) {
         if(player != null && !validateResident(player))
-            return true; // Is this a logic issue...?
+            return true;
 
         boolean bSwitch = PlayerCacheUtil.getCachePermission(player, loc, Material.STONE_BUTTON, TownyPermission.ActionType.SWITCH);
 
