@@ -7,7 +7,7 @@ Home of the code for the following features:
 ## Version support
 The `legacy` branch is coded for Movecraft 7.x and Towny v0.93.1.0 for 1.10.2 with support for Towny versions up to v0.96.2.0 and Minecraft 1.13.2.
 
-The `main` branch is coded for Movecraft 8.x and Towny v0.96.7.0 for 1.14+.
+The `main` branch is coded for Movecraft 8.x and Towny v0.96.7.0 for 1.14.4 to 1.17.1.
 
 ## Download
 
@@ -16,11 +16,7 @@ Devevlopment builds can be found on the [Releases page](https://github.com/Tyler
 Stable builds can be found on [our SpigotMC page](https://www.spigotmc.org/resources/movecraft-towny.90429/).
 
 ## Building
-This plugin requires that the user setup and build their [Movecraft](https://github.com/APDevTeam/Movecraft) development environment, and then clone this into the same folder as your Movecraft development environment such that Movecraft-Towny and Movecraft are contained in the same folder.  This plugin also requires you to build the latest version of 1.14.4 using build tools.
-
-```
-java -jar BuildTools.jar --rev 1.14.4
-```
+This plugin requires that the user setup their GitHub token in maven to authenticate with GitHub Packages, as described in [this wiki page](https://github.com/APDevTeam/Movecraft/wiki/Documentation).
 
 Then, run the following to build Movecraft-Towny through `maven`.
 ```
