@@ -6,7 +6,7 @@
 
     <groupId>net.TylerS1066.Movecraft-Towny</groupId>
     <artifactId>Movecraft-Towny</artifactId>
-    <version>1.a.1</version>
+    <version>1.0.0-alpha.2</version>
     <packaging>jar</packaging>
 
     <name>Movecraft-Towny</name>
@@ -97,7 +97,8 @@
         <dependency>
             <groupId>com.github.TownyAdvanced</groupId>
             <artifactId>Towny</artifactId>
-            <version>LATEST</version>
+            <version>0.97.2.14</version>
+            <!-- NOTE: 0.97.2.15 and higher no longer contain war features -->
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -109,7 +110,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations-java5</artifactId>
-            <version>RELEASE</version>
+            <version>22.0.0</version>
         </dependency>
     </dependencies>
 </project>
