@@ -5,12 +5,14 @@ import com.palmergames.bukkit.towny.object.TownBlock;
 import com.palmergames.bukkit.towny.object.TownyWorld;
 import net.countercraft.movecraft.MovecraftLocation;
 import net.countercraft.movecraft.craft.Craft;
+import net.countercraft.movecraft.craft.PilotedCraft;
 import net.countercraft.movecraft.events.CraftRotateEvent;
 import net.tylers1066.movecrafttowny.movecrafttowny.config.Config;
 import net.tylers1066.movecrafttowny.movecrafttowny.localisation.I18nSupport;
 import net.tylers1066.movecrafttowny.movecrafttowny.utils.TownyUtils;
 import net.tylers1066.movecrafttowny.movecrafttowny.utils.TownyWorldHeightLimits;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
@@ -22,18 +24,22 @@ public class CraftRotateListener implements Listener {
     public void onCraftRotate(CraftRotateEvent event) {
         final Set<TownBlock> townBlocks = new HashSet<>();
         final Craft craft = event.getCraft();
-        final TownyWorld townyWorld = TownyUtils.getTownyWorld(craft.getW());
+        final TownyWorld townyWorld = TownyUtils.getTownyWorld(craft.getWorld());
         if (!Config.TownyBlockMoveOnSwitchPerm)
             return;
 
+        if (!(craft instanceof PilotedCraft))
+            return;
+
+        final Player pilot = ((PilotedCraft) craft).getPilot();
         for (MovecraftLocation ml : event.getNewHitBox()) {
             Town town;
             try {
-                TownBlock townBlock = TownyUtils.getTownBlock(ml.toBukkit(event.getCraft().getW()));
+                TownBlock townBlock = TownyUtils.getTownBlock(ml.toBukkit(event.getCraft().getWorld()));
                 if (townBlock == null || townBlocks.contains(townBlock)) {
                     continue;
                 }
-                if (TownyUtils.validateCraftMoveEvent(craft.getNotificationPlayer(), ml.toBukkit(craft.getW()), townyWorld)) {
+                if (TownyUtils.validateCraftMoveEvent(pilot, ml.toBukkit(craft.getWorld()), townyWorld)) {
                     townBlocks.add(townBlock);
                     continue;
                 }
@@ -45,11 +51,12 @@ public class CraftRotateListener implements Listener {
                 if (whLim.validate(ml.getY(), spawnLoc.getBlockY())) {
                     continue;
                 }
-            }
-            catch (NullPointerException ignored) {
+            } catch (NullPointerException ignored) {
                 continue;
             }
-            event.setFailMessage(String.format(I18nSupport.getInternationalisedString("Towny - Rotation Failed") + " %s @ %d,%d,%d", town.getName(), ml.getX(), ml.getY(), ml.getZ()));
+            event.setFailMessage(
+                    String.format("%s %s @ %d,%d,%d", I18nSupport.getInternationalisedString("Towny - Rotation Failed"),
+                            town.getName(), ml.getX(), ml.getY(), ml.getZ()));
             event.setCancelled(true);
             break;
         }

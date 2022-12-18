@@ -3,6 +3,7 @@ package net.tylers1066.movecrafttowny.movecrafttowny.listener;
 import com.palmergames.bukkit.towny.object.TownBlock;
 import net.countercraft.movecraft.MovecraftLocation;
 import net.countercraft.movecraft.craft.Craft;
+import net.countercraft.movecraft.craft.PilotedCraft;
 import net.countercraft.movecraft.events.CraftSinkEvent;
 import net.countercraft.movecraft.util.hitboxes.HitBox;
 import net.tylers1066.movecrafttowny.movecrafttowny.config.Config;
@@ -27,8 +28,13 @@ public class CraftSinkListener implements Listener {
         if (hitBox.isEmpty())
             return;
 
+        Player pilot = null;
+        if (craft instanceof PilotedCraft) {
+            pilot = ((PilotedCraft) craft).getPilot();
+        }
+
         for (MovecraftLocation ml : hitBox) {
-            TownBlock townBlock = TownyUtils.getTownBlock(ml.toBukkit(event.getCraft().getW()));
+            TownBlock townBlock = TownyUtils.getTownBlock(ml.toBukkit(event.getCraft().getWorld()));
             if (townBlock == null || townBlocks.contains(townBlock)) {
                 continue;
             }
@@ -36,9 +42,11 @@ public class CraftSinkListener implements Listener {
                 townBlocks.add(townBlock);
                 continue;
             }
-            final Player notifyP = craft.getNotificationPlayer();
-            if (notifyP != null) {
-                notifyP.sendMessage(String.format(I18nSupport.getInternationalisedString("Towny - Sinking a craft is not allowed in this town plot") + " @ %d,%d,%d", ml.getX(), ml.getY(), ml.getZ()));
+            if (pilot != null) {
+                pilot.sendMessage(String.format("%s @ %d,%d,%d",
+                        I18nSupport
+                                .getInternationalisedString("Towny - Sinking a craft is not allowed in this town plot"),
+                        ml.getX(), ml.getY(), ml.getZ()));
             }
             event.setCancelled(true);
             break;

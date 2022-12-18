@@ -11,7 +11,6 @@ import net.tylers1066.movecrafttowny.movecrafttowny.utils.TownyUtils;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -31,17 +30,17 @@ public final class MovecraftTowny extends JavaPlugin {
         saveDefaultConfig();
 
         // TODO other languages
-        String[] languages = {"en"};
+        String[] languages = { "en" };
         for (String s : languages) {
-            if (!new File(getDataFolder()  + "/localisation/movecrafttownylang_"+ s +".properties").exists()) {
-                this.saveResource("localisation/movecrafttownylang_"+ s +".properties", false);
+            if (!new File(getDataFolder() + "/localisation/movecrafttownylang_" + s + ".properties").exists()) {
+                this.saveResource("localisation/movecrafttownylang_" + s + ".properties", false);
             }
         }
         Config.Locale = getConfig().getString("Locale", "en");
         I18nSupport.init();
 
         Plugin temp = getServer().getPluginManager().getPlugin("Towny");
-        if(temp == null || !(temp instanceof Towny)) {
+        if (temp == null || !(temp instanceof Towny)) {
             getLogger().log(Level.SEVERE, I18nSupport.getInternationalisedString("Startup - Towny Not Found"));
             return;
         }
