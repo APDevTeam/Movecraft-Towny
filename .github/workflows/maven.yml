@@ -1,6 +1,11 @@
 name: Java CI
 
-on: [workflow_dispatch, push, pull_request]
+on: 
+  workflow_dispatch:
+  push:
+  pull_request:
+  schedule:
+    - cron: '22 17 * * 6'
 
 jobs:
   # Build Movecraft-Towny
