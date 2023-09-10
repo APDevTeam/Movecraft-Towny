@@ -11,7 +11,6 @@ import com.palmergames.bukkit.towny.object.TownBlock;
 import com.palmergames.bukkit.towny.object.TownyPermission;
 import com.palmergames.bukkit.towny.object.TownyWorld;
 import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
-import com.palmergames.bukkit.towny.war.common.WarZoneConfig;
 import net.tylers1066.movecrafttowny.movecrafttowny.MovecraftTowny;
 import net.tylers1066.movecrafttowny.movecrafttowny.config.Config;
 import net.tylers1066.movecrafttowny.movecrafttowny.localisation.I18nSupport;
@@ -39,14 +38,10 @@ public class TownyUtils {
     @Nullable
     public static TownyWorld getTownyWorld(World w) {
         TownyWorld tw;
-        try {
-            tw = TownyUniverse.getInstance().getDataSource().getWorld(w.getName());
-            if(!tw.isUsingTowny())
-                return null;
-        }
-        catch (NotRegisteredException e) {
+        tw = TownyUniverse.getInstance().getWorld(w.getName());
+        if(tw == null || !tw.isUsingTowny())
             return null;
-        }
+
         return tw;
     }
 
@@ -96,13 +91,8 @@ public class TownyUtils {
     }
 
     public static boolean validateResident(Player player) {
-        try {
-            Resident resident = TownyUniverse.getInstance().getDataSource().getResident(player.getName());
-            return true;
-        }
-        catch (TownyException e) {
-            return false;
-        }
+        Resident resident = TownyUniverse.getInstance().getResident(player.getName());
+        return resident != null;
     }
 
     public static boolean validateCraftMoveEvent(Player player, Location loc, TownyWorld world) {
@@ -115,9 +105,7 @@ public class TownyUtils {
             return true;
 
         PlayerCache playerCache = MovecraftTowny.getInstance().getTownyPlugin().getCache(player);
-        PlayerCache.TownBlockStatus status = playerCache.getStatus();
-
-        return !playerCache.hasBlockErrMsg() && status == PlayerCache.TownBlockStatus.WARZONE && WarZoneConfig.isAllowingSwitchesInWarZone();
+        return !playerCache.hasBlockErrMsg();
     }
 
     public static boolean validatePVP(TownBlock tb) {
