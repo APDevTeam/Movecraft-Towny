@@ -7,7 +7,7 @@ Home of the code for the following features:
 ## Version support
 The `legacy` branch is coded for Movecraft 7.x and Towny v0.93.1.0 for 1.10.2 with support for Towny versions up to v0.96.2.0 and Minecraft 1.13.2.
 
-The `main` branch is coded for Movecraft 8.x and Towny v0.96.7.0 to 0.97.2.14 for 1.14.4 to 1.17.1.
+The `main` branch is coded for Movecraft 8.x and Towny v0.96.7.0 to 0.99.2.0 for 1.14.4 to 1.20.1.
 
 ## Download
 
